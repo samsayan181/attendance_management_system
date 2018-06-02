@@ -25,7 +25,7 @@ SECRET_KEY = 'vmkv=15x0#4*t+)kfihog%n5#v=p!=8hjm99=_@av(%_r6*8)v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =  ['jisattendance.herokuapp.com',]
+ALLOWED_HOSTS =  ['*',]
 
 DATABASES = {
     'default': {
