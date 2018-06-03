@@ -20,6 +20,8 @@ import diary.views as dry
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dry.home),
-    path('student-stats/', dry.Statistics),
-    path('course-stats/', dry.Statistics),
+    path('student-stats/', dry.StatbyRoll),
+    path('paper-stats/', dry.StatByPaper),
+    path('student/<int:pk>', dry.StatStudent),
+    path('paper/<int:pk>', dry.StatPaper),
 ]

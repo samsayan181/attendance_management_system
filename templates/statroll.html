@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <main role="main">
+      <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll no</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>      
+      <th scope="row">{{ forloop.counter }}</th>
+      <td><a href="/student/{{ student.pk }}">{{ student.name }}</a></td>
+      <td>{{ student.roll_no }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Sayantan Halder</p>
+    </footer>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <main role="main">
+      <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Paper Code</th>
+      <th scope="col">Taught by</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for paper in papers %}
+    <tr>      
+      <th scope="row">{{ forloop.counter }}</th>
+      <td><a href="/paper/{{ paper.pk }}">{{ paper.name }}</a></td>
+      <td>{{ paper.paper_code }}</td>
+      <td>{{ paper.taken_by }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Sayantan Halder</p>
+    </footer>
+{% endblock %}

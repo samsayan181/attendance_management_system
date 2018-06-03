@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <main role="main">
+        <div class="container">
+          <h4 class="display-6 text-center">{{ student.name }}</h4>
+          <h5 class="display-6 text-center">{{ student.roll_no }}</h5>
+          <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
+          <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course code</th>
+            <th scope="col">Attendance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for name, count in counts.items %}
+          <tr>      
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ name }}</td>
+            <td>{{ count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+
+    <footer class="container">
+      <p>&copy; Sayantan Halder</p>
+    </footer>
+{% endblock %}
