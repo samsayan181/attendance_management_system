@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 import diary.views as dry 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,4 @@ urlpatterns = [
     path('paper-stats/', dry.StatByPaper),
     path('student/<int:pk>', dry.StatStudent),
     path('paper/<int:pk>', dry.StatPaper),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
