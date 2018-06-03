@@ -25,4 +25,5 @@ urlpatterns = [
     path('paper-stats/', dry.StatByPaper),
     path('student/<int:pk>', dry.StatStudent),
     path('paper/<int:pk>', dry.StatPaper),
+    path('datestat/', dry.statbyDate),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

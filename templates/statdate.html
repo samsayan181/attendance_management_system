@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <main role="main">
+        <div class="container">
+          <h4 class="display-6 text-center">Statistics by Date</h4>
+          <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
+          <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+      <div class="form-group col-md-6">
+        <label for="datee">Select Date</label>
+        <input type="date" name="date" class="form-control" id="datee" placeholder="Date">
+      </div>
+        <div class="form-group col-md-6">
+          <select name="course" class="custom-select" id="course">
+            <option selected disabled>Select Course</option>
+            {% for course in courses %}
+              <option value="{{ course.pk }}">{{ course.name }}({{ course.paper_code }})</option>
+            {% endfor %}
+          </select>
+      </div>
+    <div class="form-group col-md-6">
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+{% if attendances %}
+    <h6>Course - {{ course.name|default:None }} on date - {{ date }}</h6>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Roll No</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for attendance in attendances %}
+            {% for student in attendance.students.all %}
+              <tr>      
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_no }}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+    </main>
+
+    <footer class="container">
+      <p>&copy; Sayantan Halder</p>
+    </footer>
+{% endblock %}
