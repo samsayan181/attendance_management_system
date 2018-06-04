@@ -43,6 +43,7 @@ def StatPaper(request, pk=None):
 def statbyDate(request):
 	courses = Course.objects.all()
 	attendances = Attendance.objects.all()
+	date = course = None
 	if request.method == "POST":
 		date = request.POST.get('date', None)
 		course = request.POST.get('course', None)
