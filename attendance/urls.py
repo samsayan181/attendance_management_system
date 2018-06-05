@@ -18,6 +18,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 import diary.views as dry 
+
+admin.site.site_title = 'Attendance Admin'
+admin.site.site_header = 'Attendance Management System'
+admin.site.index_title = 'Attendance Administration'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dry.home),
