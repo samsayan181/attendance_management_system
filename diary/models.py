@@ -5,6 +5,9 @@ class Student(models.Model):
 	name = models.CharField(max_length=200)
 	roll_no = models.CharField(max_length=200, unique=True)
 
+	class Meta:
+		ordering = ['roll_no']
+
 	def __str__(self):
 		return "{} ({})".format(self.name, self.roll_no)
 
