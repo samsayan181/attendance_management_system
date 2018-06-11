@@ -25,7 +25,7 @@ def StatStudent(request, pk=None):
 		attendances = Attendance.objects.filter(students__in=[student])
 		counts = {}
 		for attendance in attendances:
-			counts[attendance.course.paper_code] = counts.get(attendance.course.paper_code, 0) + 1
+			counts[attendance.course] = counts.get(attendance.course, 0) + 1
 		return render(request, 'statstudent.html', {"counts" : counts, "student": student})
 	except:
 		raise Http404

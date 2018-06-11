@@ -6,7 +6,7 @@ class Student(models.Model):
 	roll_no = models.CharField(max_length=200, unique=True)
 
 	def __str__(self):
-		return self.name
+		return "{} ({})".format(self.name, self.roll_no)
 
 class Professor(models.Model):
 	name = models.CharField(max_length=200)
@@ -20,7 +20,7 @@ class Course(models.Model):
 	taken_by = models.ForeignKey('Professor', on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.name
+		return "{} ({})".format(self.name, self.taken_by)
 
 class Attendance(models.Model):
 	course = models.ForeignKey('Course', on_delete=models.CASCADE)
