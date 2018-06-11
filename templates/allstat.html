@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <main role="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      {% for course in courses %}
+        <th scope="col">{{ course.name }}</th>
+      {% endfor %}
+        <th scope="col">Total Lectures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>      
+      {% for c in total_course %}
+      <td>{{ c }}</td>
+      {% endfor %}
+      <td>{{ total_lectures }}</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+
+      <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll No</th>
+      {% for course in courses %}
+        <th scope="col">{{ course.name }}</th>
+      {% endfor %}
+      <th scope="col">Total Attended</th>
+      <th scope="col">Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for key, values in data.items %}
+    <tr>      
+      <td scope="row">{{ forloop.counter }}</td>
+      <td>{{ key }}</td>
+      <td>{{ values.roll_no }}</td>
+      {% for att in values.attendances %}
+      <td>{{ att }}</td>
+      {% endfor %}
+      <td>{{ values.total }}</td>
+      <td>{{ values.percentage }}%</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <footer class="container">
+      <p>&copy; Sayantan Halder</p>
+    </footer>
+{% endblock %}

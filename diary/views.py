@@ -54,3 +54,23 @@ def statbyDate(request):
 			attendances = attendances.filter(course=course)
 	print(attendances)
 	return render(request, 'statdate.html', { "courses" : courses, "attendances": attendances, "date": date, "course": course})
+
+def statAll(request):
+	courses = Course.objects.all().order_by('name')
+	attendances = Attendance.objects.all()
+	total_lectures = attendances.count()
+	data = {}
+	total_course = [0] * courses.count()
+	total_lectures = Attendance.objects.count()
+	for student in Student.objects.all():
+		data[student.name] = { 'roll_no' : student.roll_no , 'attendances': [0] * courses.count() , 'total' : 0, 'percentage': 0}
+	index = 0
+	for course in courses:
+		for attendance in Attendance.objects.filter(course=course):
+			total_course[index] += 1
+			for student in attendance.students.all():
+				data[student.name]['total'] += 1
+				data[student.name]['percentage'] = data[student.name]['total'] / total_lectures * 100 
+				data[student.name]['attendances'][index] += 1
+		index += 1
+	return render(request, 'allstat.html', {'courses': courses, 'data': data, 'total_lectures': total_lectures, 'total_course': total_course})

@@ -31,4 +31,5 @@ urlpatterns = [
     path('student/<int:pk>', dry.StatStudent),
     path('paper/<int:pk>', dry.StatPaper),
     path('datestat/', dry.statbyDate),
+    path('allstat/', dry.statAll),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
