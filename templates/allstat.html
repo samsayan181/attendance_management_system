@@ -10,7 +10,7 @@
   <thead>
     <tr>
       {% for course in courses %}
-        <th scope="col">{{ course.name }}</th>
+        <th scope="col">{{ course.name }}( {{ course.paper_code }} )</th>
       {% endfor %}
         <th scope="col">Total Lectures</th>
     </tr>
@@ -36,7 +36,7 @@
       <th scope="col">Name</th>
       <th scope="col">Roll No</th>
       {% for course in courses %}
-        <th scope="col">{{ course.name }}</th>
+        <th scope="col">{{ course.name }}( {{ course.paper_code }} )</th>
       {% endfor %}
       <th scope="col">Total Attended</th>
       <th scope="col">Percentage</th>
