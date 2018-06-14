@@ -43,7 +43,8 @@ def StatPaper(request, pk=None):
 def statbyDate(request):
 	courses = Course.objects.all()
 	attendances = Attendance.objects.all()
-	date = course = None
+	date = None
+	course = None
 	if request.method == "POST":
 		date = request.POST.get('date', None)
 		course = request.POST.get('course', None)
@@ -52,8 +53,9 @@ def statbyDate(request):
 		if course:
 			course = Course.objects.get(pk=course)
 			attendances = attendances.filter(course=course)
-	print(attendances)
-	return render(request, 'statdate.html', { "courses" : courses, "attendances": attendances, "date": date, "course": course})
+		return render(request, 'statdate.html', { "courses" : courses, "attendances": attendances, "date": date, "course": course})
+	return render(request, 'statdate.html', {"courses" : courses})
+
 
 def statAll(request):
 	courses = Course.objects.all().order_by('name')
